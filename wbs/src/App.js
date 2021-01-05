@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
 import axios from "axios";
+import react,{useState,useEffect} from "react";
 
 function App() {
+
+  let[berrie,setberrie]=useState("")
+  useEffect(()=>{
+    axios.get("https://pokeapi.co/api/v2/berry/1").then((response)=>{setberrie(response.data.name)});
+    console.log("test");
+  })
+  
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+      <input type="text" placeholder="please search for berries" onChange={(event)=>setberrie(event.target.value)}/><button></button>
     </div>
   );
 }
